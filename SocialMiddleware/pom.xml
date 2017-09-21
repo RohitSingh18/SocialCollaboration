@@ -8,12 +8,33 @@
   <name>SocialMiddleware Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+   
+   <dependency>
+    <groupId>com.collaborate</groupId>
+  <artifactId>SocialBackend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.7.5</version>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>4.3.5.RELEASE</version>
+</dependency>
+    
   </dependencies>
   <build>
     <finalName>SocialMiddleware</finalName>

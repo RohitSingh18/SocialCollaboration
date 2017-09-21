@@ -62,7 +62,7 @@ public class BlogDaoTestCase {
 		assertTrue("problem in blog editing",blogDao.editBlog(blog));
 		
 	}
-	
+	@Ignore
 	@Test
     public void	approveblog()
     {  Blog blog=new Blog();

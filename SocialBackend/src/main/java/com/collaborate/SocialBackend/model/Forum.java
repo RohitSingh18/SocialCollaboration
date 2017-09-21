@@ -1,5 +1,7 @@
 package com.collaborate.SocialBackend.model;
 
+import java.util.Date;
+
 public class Forum {
 	
 	private Integer forumID;
@@ -7,7 +9,13 @@ public class Forum {
 	private String forumContent;
 	private String status;
 	private String userID;
-	private Integer likes;
+	private Date createDate;
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 	public Integer getForumID() {
 		return forumID;
 	}
@@ -38,12 +46,7 @@ public class Forum {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
-	public Integer getLikes() {
-		return likes;
-	}
-	public void setLikes(Integer likes) {
-		this.likes = likes;
-	}
+
 	
 
 }

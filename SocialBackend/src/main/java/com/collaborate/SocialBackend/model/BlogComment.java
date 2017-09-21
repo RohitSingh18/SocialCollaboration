@@ -1,5 +1,7 @@
 package com.collaborate.SocialBackend.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,11 +14,11 @@ import org.springframework.stereotype.Component;
 public class BlogComment {
 	
 	@Id
+	private Integer ID;
 	private Integer blogID;
-	private String blogName;
-	private String blogContent;
-	private String status;
-	private String userID;
-	private Integer likes;
+	private String blogComment;
+	private Date commentDate;
+	private Integer userID;
+	private String username;
 
 }
