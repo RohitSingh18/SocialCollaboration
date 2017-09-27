@@ -45,6 +45,7 @@ public class BlogDaoImpl implements BlogDao {
 	public boolean deleteBlog(int blogID) {
 		Session session= sessionFactory.getCurrentSession();
 		Blog blog=(Blog)sessionFactory.getCurrentSession().get(Blog.class,blogID);
+		session.delete(blog);
 		return true;
 	}
 	@Transactional
