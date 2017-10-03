@@ -16,13 +16,15 @@ public class User {
 	private  String lastName;
 	private String email;
 	private String password;
-	private String isOnline;
-	public String getIsOnline() {
-		return isOnline;
+	private boolean Online;
+
+	public boolean isOnline() {
+		return Online;
 	}
-	public void setIsOnline(String isOnline) {
-		this.isOnline = isOnline;
+	public void setOnline(boolean online) {
+		Online = online;
 	}
+	
 	public String getStatus() {
 		return status;
 	}

@@ -5,6 +5,7 @@ var app=angular.module("app",['ngRoute'])
 app.config (function($routeProvider)){
 	$routeProvider
 	.when('/register',{
-		templateUrl:'views/'
+		templateUrl:'views/registrationform.html',
+		controller:'UserController'
 	})
 }

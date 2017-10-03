@@ -1,10 +1,10 @@
-package com.collaborate.SocialBackend.Dao;
+package com.collaborate.SocialBackend.service;
 
 import java.util.List;
 
 import com.collaborate.SocialBackend.model.User;
 
-public interface UserDao {
+public interface UserService {
 	public boolean addUser(User user);
 	public boolean isvalidemail(String emailId);
 	public boolean isvalidusername(String userName);
