@@ -8,22 +8,29 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-@Table(name="Blog")
+@Table(name="Usertable")
 public class User {
+	
 	@Id
 	private String userName;
 	private String firstName;
 	private  String lastName;
-	private String email;
+	private String emailId;
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
 	private String password;
-	private boolean Online;
-
+	private boolean isOnline;
 	public boolean isOnline() {
-		return Online;
+		return isOnline;
 	}
-	public void setOnline(boolean online) {
-		Online = online;
+	public void setOnline(boolean isOnline) {
+		this.isOnline = isOnline;
 	}
+	
 	
 	public String getStatus() {
 		return status;
@@ -58,12 +65,7 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	public String getPassword() {
 		return password;
 	}

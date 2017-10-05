@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.collaborate.SocialBackend.model.User;
+import com.collaborate.SocialBackend.model.Error;
 import com.collaborate.SocialBackend.service.UserService;
 
 @Transactional
-
 @Controller
 public class UserController {
 	
@@ -32,10 +32,67 @@ public class UserController {
 		if(validuser==null)
 		{
 			Error error=new Error(4,"Invalid username/password");
-			return new ResponsibiltyEntity<Error>(error,HttpStatus.UNAUTHORIZED); 
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED); 
 		}
+		
+		System.out.println("Online status before update"+ validuser.isOnline());
+		validuser.setOnline(true);
+		try{
+			userService.updateUser(validuser);
+		}catch (Exception e)
+		{
+			Error error=new Error(6,"Invalid username/password");
+			return new ResponseEntity<Error>(error,HttpStatus.INTERNAL_SERVER_ERROR); 
+		
+		}
+		System.out.println("Online status after update" + validuser.isOnline());
+		return new ResponseEntity<User>(validuser,HttpStatus.OK);
 	}
 	
-	
+	@RequestMapping(value="/registerUser",method=RequestMethod.POST)
+	public ResponseEntity<?> registerUser(@RequestBody User user)
+	{
+		if(!userService.isvalidusername(user.getUserName()))
+		{
+			Error error=new Error(2,"username already exits");
+			return new ResponseEntity<Error>(error,HttpStatus.NOT_ACCEPTABLE
+		);
+		}
+		
+		if(!userService.isvalidusername(user.getEmailId()))
+		{
+			Error error=new Error(3,"username already exits");
+			return new ResponseEntity<Error>(error,HttpStatus.NOT_ACCEPTABLE);
+		}
+		boolean result=userService.addUser(user);
+		if(result)
+		{
+			return new ResponseEntity<User>(user,HttpStatus.OK);
+		}
+		else{
+			Error error=new Error (1,"unable to register user");
+			System.out.println("error"+error);
+			return new ResponseEntity<Error>(error,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	@RequestMapping(value="/logout",method=RequestMethod.PUT)
+	public ResponseEntity<?> logout(HttpSession session)
+	{
+		String userName=(String)session.getAttribute("userName");
+		System.out.println("name of the user: "+userName);
+		if(userName==null)
+		{
+			Error error=new Error(5,"unathorised access");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+			
+		}
+		User user=userService.getUserById(userName);
+		user.setOnline(false);
+		userService.updateUser(user);
+		session.removeAttribute(userName);
+		session.invalidate();
+		return new ResponseEntity<User>(user,HttpStatus.OK);
+	}
 
 }

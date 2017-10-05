@@ -1,16 +1,17 @@
 /**
  * 
  */
-app.controller('UseController',function($scope){
+app.controller('UserController',function($scope,UserService,$location,$rootScope,$cookieStore){
 	$scope.registerUser=function(){
 		
 //		CALL userservice - pass user data in Json format
        
 		console.log("USER DATA IS"+ $scope.user)
         UserService.registerUser($scope.user).then(function(response){
+        	alert('user registered succesfully!!')
         	console.log(response.data)
         	console.log(response.status)
-        	$location.path('/login')
+        	$location.path('/')
         	//redirect  the user to login page with" registration success"
         },function(response){
         	
@@ -18,7 +19,7 @@ app.controller('UseController',function($scope){
         	//display the error message in registratn form
         	console.log(response.data)
         	console.log(response.status)
-        	console.erroe=response.data
+        	console.error=response.data
         	$location.path('/register')
         }
         )
@@ -27,12 +28,14 @@ app.controller('UseController',function($scope){
 	$scope.login=function(){
 		console.log($scope.user)
 		UserService.login($scope.user).then(function(response){
-			$cookieStore.put('user')
-			$location.path('/home')
+			alert('Login succesfull')
+			$rootScope.currentUser=response.data
+			$cookieStore.put('userDetails',response.data)
+			$location.path('/')
 		},function(response){
-			$scope.error-=response.data.message
+			$scope.error=response.data.message
 			$location.path('/login')
 			
 		})
 	}
-})
+});

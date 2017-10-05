@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 
 import com.collaborate.SocialBackend.model.Blog;
+import com.collaborate.SocialBackend.model.User;
 
 @Configuration
 @ComponentScan("com.collaborate.SocialBackend")
@@ -47,6 +48,7 @@ public class DBConfig {
 	 LocalSessionFactoryBuilder localSessionFactoryBuilder=new LocalSessionFactoryBuilder(getOracleDataSource());
 	 localSessionFactoryBuilder.addProperties(getHibernateProperties());
 	 localSessionFactoryBuilder.addAnnotatedClass(Blog.class);
+	 localSessionFactoryBuilder.addAnnotatedClass(User.class);
 	 return localSessionFactoryBuilder.buildSessionFactory(); 
   }
 

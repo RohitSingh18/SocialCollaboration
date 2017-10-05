@@ -3,12 +3,12 @@
  */
 app.factory('UserService',function($http){
 	var userService={}
-	var BASE_URL="http://localhost:8080/collaboration_middleware"
+	var BASE_URL="http://localhost:8080/SocialMiddleware"
 		
 		userService.registerUser=function(user)
 
 	{
-		return $http.post(BASE_URL + "/registeruser",user)
+		return $http.post(BASE_URL + "/registerUser",user)
 
 	}
 		userService.login=function(user)
@@ -17,7 +17,7 @@ app.factory('UserService',function($http){
 		}
 	
 		userService.logout=function(){
-			return $http.put(BASE_URL +"/logout",user)//define in backend 
+			return $http.put(BASE_URL +"/logout")//define in backend 
 		}
 	return userService ;
 		
