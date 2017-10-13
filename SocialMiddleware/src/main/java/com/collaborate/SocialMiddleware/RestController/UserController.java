@@ -1,5 +1,6 @@
 package com.collaborate.SocialMiddleware.RestController;
 
+
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -25,8 +26,8 @@ public class UserController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ResponseEntity<?> login(@RequestBody User user,HttpSession session)
 	{
-		user.setStatus("NA");
-		user.setOnline(true);
+	//	user.setStatus("NA");
+		//user.setOnline(true);
 		
 		User validuser=userService.login(user);
 		if(validuser==null)
@@ -46,6 +47,7 @@ public class UserController {
 		
 		}
 		System.out.println("Online status after update" + validuser.isOnline());
+		session.setAttribute("userName",user.getUserName());
 		return new ResponseEntity<User>(validuser,HttpStatus.OK);
 	}
 	

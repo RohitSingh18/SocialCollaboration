@@ -1,3 +1,4 @@
+
 package com.collaborate.config;
 
 import java.util.Properties;
@@ -5,6 +6,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +25,7 @@ import com.collaborate.SocialBackend.model.User;
 
 public class DBConfig {
 	
-@Bean	
+	@Bean(name="dataSource")
  public DataSource getOracleDataSource(){
 	DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 	driverManagerDataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
@@ -41,7 +43,7 @@ public class DBConfig {
 	 return properties;
 	 	 
  }
- 
+ @Autowired
  @Bean
  public SessionFactory getSessionFactory()
  {
@@ -51,7 +53,7 @@ public class DBConfig {
 	 localSessionFactoryBuilder.addAnnotatedClass(User.class);
 	 return localSessionFactoryBuilder.buildSessionFactory(); 
   }
-
+@Autowired
 @Bean
 public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
 {

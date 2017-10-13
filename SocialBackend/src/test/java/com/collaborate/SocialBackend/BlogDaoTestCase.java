@@ -34,7 +34,7 @@ public class BlogDaoTestCase {
 		blog.setCreateDate(new java.util.Date());
 		blog.setLikes(0);
 		blog.setStatus("NA");
-		blog.setUserID("alpha@gmail.com");
+		blog.setBlogID(18);
         blogDao.createBlog(blog);
         
         assertTrue("problem in blog creation",blogDao.createBlog(blog));
@@ -57,7 +57,7 @@ public class BlogDaoTestCase {
 		blog.setCreateDate(new java.util.Date());
 		blog.setLikes(0);
 		blog.setStatus("NA");
-		blog.setUserID("bravo@gmail.com");
+		//blog.setUserID("bravo@gmail.com");
 	
 		assertTrue("problem in blog editing",blogDao.editBlog(blog));
 		
@@ -72,11 +72,11 @@ public class BlogDaoTestCase {
 	   blog.setCreateDate(new java.util.Date());
 	   blog.setLikes(0);
 	   blog.setStatus("A");
-	   blog.setUserID("alpha@gmail.com");
+	   //blog.setUserID("alpha@gmail.com");
        
        assertTrue("approved blog",blogDao.approveBlog(blog));
     }
-	
+	@Ignore
 	@Test
 	public void getallapprovedblogtest()
 	{

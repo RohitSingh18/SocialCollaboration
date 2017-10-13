@@ -30,7 +30,7 @@ app.controller('UserController',function($scope,UserService,$location,$rootScope
 		UserService.login($scope.user).then(function(response){
 			alert('Login succesfull')
 			$rootScope.currentUser=response.data
-			$cookieStore.put('userDetails',response.data)
+		//	$cookieStore.put('userDetails',response.data)
 			$location.path('/')
 		},function(response){
 			$scope.error=response.data.message
@@ -38,4 +38,5 @@ app.controller('UserController',function($scope,UserService,$location,$rootScope
 			
 		})
 	}
+	
 });

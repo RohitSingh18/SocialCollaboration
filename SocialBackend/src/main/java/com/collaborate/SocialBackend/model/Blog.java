@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -18,9 +19,23 @@ public class Blog {
 	private String blogName;
 	private String blogContent;
 	private String status;
-	private String userID;
+	@ManyToOne
+	private User postedBy;
 	private Integer likes;
+	private String rejectionReason;
 	
+	public User getPostedBy() {
+		return postedBy;
+	}
+	public void setPostedBy(User postedBy) {
+		this.postedBy = postedBy;
+	}
+	public String getRejectionReason() {
+		return rejectionReason;
+	}
+	public void setRejectionReason(String rejectionReason) {
+		this.rejectionReason = rejectionReason;
+	}
 	public Integer getLikes() {
 		return likes;
 	}
@@ -58,11 +73,6 @@ public class Blog {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getUserID() {
-		return userID;
-	}
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
+
 
 }

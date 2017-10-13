@@ -15,6 +15,11 @@ app.config (function($routeProvider){
 	.when('/register',{
 		templateUrl:'views/registrationform.html',
 		controller:'UserController'
+	})
+	.when('/getblogs',{
+		templateUrl:'views/bloglist.html',
+		controller:'BlogController'
+
 	});
 	
 	

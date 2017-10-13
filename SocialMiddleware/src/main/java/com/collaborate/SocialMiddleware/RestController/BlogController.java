@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.collaborate.SocialBackend.Dao.BlogDao;
 import com.collaborate.SocialBackend.model.Blog;
+import com.collaborate.SocialBackend.model.Error;
 
 @RestController
 public class BlogController {
@@ -33,16 +34,19 @@ public class BlogController {
 	}
 	
 	@PostMapping(value="/createblog")
-	public ResponseEntity <String> createblog(@RequestBody Blog blog)
+	public ResponseEntity <?> createblog(@RequestBody Blog blog)
 	{
 		blog.setCreateDate(new java.util.Date());
 		blog.setStatus("NA");
 		blog.setLikes(0);
 		
 		if(blogDao.createBlog(blog))
-		{  return new ResponseEntity <String> ("Blog created",HttpStatus.OK);}
+		{  return new ResponseEntity <Blog> (blog,HttpStatus.OK);}
+		
 		else
-		{ return new ResponseEntity <String> ("problem in creating",HttpStatus.NOT_ACCEPTABLE);}
+			
+		{ Error error=new Error(4,"error creating blog");
+			return new ResponseEntity <Error> (error,HttpStatus.NOT_ACCEPTABLE);}
 	
 	}
 	@PutMapping(value="/approveblog/{blogId}")
