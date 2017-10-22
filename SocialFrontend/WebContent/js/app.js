@@ -19,8 +19,14 @@ app.config (function($routeProvider){
 	.when('/getblogs',{
 		templateUrl:'views/bloglist.html',
 		controller:'BlogController'
+	});
+	
+	.when('/addjob',{
+		templateUrl:'views/jobform.html',
+		controller:'JobController'
 
 	});
+	
 	
 	
 

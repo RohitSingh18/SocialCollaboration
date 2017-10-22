@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+app.controller('JobController',function($scope,$location,Jobservice){
+	$scope.addJob=function(){
+		JobService.addjob($scope.job).then(function(response){
+			console.log(response.data)
+			console.log(response.status)
+			$location.path('/home')
+		},function(response){
+			console.log(response.data)
+			console.log(response.status)
+			console.error=response.data
+        	if(response.status==401)
+        		{
+        		$scope.error=response.data
+        		$location.path('/login')
+        		}
+        	else{
+        		$scope.error=response.data
+        		$loacation.path('/addjob')
+        	}
+		
+		})
+	}
+})
