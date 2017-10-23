@@ -24,9 +24,13 @@ app.config (function($routeProvider){
 	.when('/addjob',{
 		templateUrl:'views/jobform.html',
 		controller:'JobController'
+});
+	
+	.when('/getsuggestedusers',{
+		templateUrl:'views/getsuggestedusers.html',
+		controller:'FriendController'
 
 	});
-	
 	
 	
 
