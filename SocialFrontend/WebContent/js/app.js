@@ -16,22 +16,21 @@ app.config (function($routeProvider){
 		templateUrl:'views/registrationform.html',
 		controller:'UserController'
 	})
+
+	
+	.when('/getsuggestedusers',{
+		templateUrl:'views/suggestedusers.html',
+		controller:'FriendController'
+
+	})
+	.when('/addjob',{
+		templateUrl:'views/jobform.html',
+		controller:'JobController'
+})
 	.when('/getblogs',{
 		templateUrl:'views/bloglist.html',
 		controller:'BlogController'
 	});
-	
-	.when('/addjob',{
-		templateUrl:'views/jobform.html',
-		controller:'JobController'
-});
-	
-	.when('/getsuggestedusers',{
-		templateUrl:'views/getsuggestedusers.html',
-		controller:'FriendController'
-
-	});
-	
 	
 
 })
