@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.collaborate.SocialBackend.model.Friend;
 import com.collaborate.SocialBackend.model.User;
 
 @Repository
@@ -21,11 +22,7 @@ public class FriendDaoImpl implements FriendDao {
 	private SessionFactory sessionFactory;
 	public List<User> listOfSuggestedUsers(String UserName) {
 		Session session=sessionFactory.getCurrentSession();
-SQLQuery query=	session.createSQLQuery("select*from user where username in"
-				+"(select username from user where username!=? minus"
-				+"(select fromId from Friend where toId=?"
-				+"union select toId from Friend where fromId=?)"
-				+")");
+SQLQuery query=	session.createSQLQuery("select * from user where username in (select username from user where username!=? minus(select fromId from Friend where toId=?union select toId from Friend where fromId=?))");
 		query.setString(0, UserName);
 		query.setString(1, UserName);
 		query.setString(2, UserName);
@@ -33,9 +30,17 @@ SQLQuery query=	session.createSQLQuery("select*from user where username in"
 		List<User>suggestedUsers=query.list();
 		return suggestedUsers; //List<User>
 	}
-	
-		
-		
+	public void friendRequest(Friend friend) {
+		Session session=sessionFactory.getCurrentSession();
+		session.save(friend);
 		
 	}
+	public List<Friend> pendingRequests(String toId) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from friend where toId=? and status='P'");
+		query.setString(0, toId);
+		return query.list();
+	}
+
+}
 

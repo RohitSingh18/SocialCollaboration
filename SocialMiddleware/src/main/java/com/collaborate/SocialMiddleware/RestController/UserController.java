@@ -81,18 +81,18 @@ public class UserController {
 	@RequestMapping(value="/logout",method=RequestMethod.PUT)
 	public ResponseEntity<?> logout(HttpSession session)
 	{
-		String userName=(String)session.getAttribute("userName");
-		System.out.println("name of the user: "+userName);
-		if(userName==null)
+		String username=(String)session.getAttribute("userName");
+		System.out.println("name of the user: "+username);
+		if(username==null)
 		{
 			Error error=new Error(5,"unathorised access");
 			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 			
 		}
-		User user=userService.getUserById(userName);
+		User user=userService.getUserById(username);
 		user.setOnline(false);
 		userService.updateUser(user);
-		session.removeAttribute(userName);
+		session.removeAttribute(username);
 		session.invalidate();
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
