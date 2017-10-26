@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 
 import com.collaborate.SocialBackend.model.Blog;
 import com.collaborate.SocialBackend.model.Friend;
@@ -21,50 +21,65 @@ import com.collaborate.SocialBackend.model.Job;
 import com.collaborate.SocialBackend.model.User;
 
 @Configuration
-@ComponentScan("com.collaborate.SocialBackend")
 @EnableTransactionManagement
-
-
+@ComponentScan(basePackages="com.collaborate")
 public class DBConfig {
 	
 	@Bean(name="dataSource")
- public DataSource getOracleDataSource(){
-	DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-	driverManagerDataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-	driverManagerDataSource.setUrl("jdbc:oracle:thin:@//localhost:1521/XE");
-	driverManagerDataSource.setUsername("collaboration");
-	driverManagerDataSource.setPassword("recon");
-    return driverManagerDataSource;
-}
- 
- public Properties getHibernateProperties()
- {
-	 Properties properties=new Properties();
-	 properties.setProperty("hibernate.hbm2ddl.auto","update");
-	 properties.put("hibernate.dialect","org.hibernate.dialect.Oracle10gDialect");
-	 return properties;
-	 	 
- }
- @Autowired
- @Bean
- public SessionFactory getSessionFactory()
- {
-	 LocalSessionFactoryBuilder localSessionFactoryBuilder=new LocalSessionFactoryBuilder(getOracleDataSource());
-	 localSessionFactoryBuilder.addProperties(getHibernateProperties());
-	 localSessionFactoryBuilder.addAnnotatedClass(Blog.class);
-	 localSessionFactoryBuilder.addAnnotatedClass(User.class);
-	 localSessionFactoryBuilder.addAnnotatedClass(Job.class);
-	 localSessionFactoryBuilder.addAnnotatedClass(Friend.class);
-	 return localSessionFactoryBuilder.buildSessionFactory(); 
-  }
-@Autowired
-@Bean
-public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
-{
-	HibernateTransactionManager transactionManager= new HibernateTransactionManager();
-	transactionManager.setSessionFactory(sessionFactory);
-	System.out.println("Data Source Created");
-	return transactionManager;
-}
+	
+	public DataSource getOracleDataSource(){
+		DriverManagerDataSource driverManagerDataSource = 
+				new DriverManagerDataSource();
+		driverManagerDataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		
+		driverManagerDataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+		
+		driverManagerDataSource.setUsername("collaboration");
+		
+		driverManagerDataSource.setPassword("recon");
+		
+		return driverManagerDataSource;		
+	}
+	
+	public Properties getHibernateProperties() {
+		Properties properties=new Properties();
+		
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+		
+		properties.setProperty("hibernate.show_sql", "true");
+		
+    	properties.setProperty("hibernate.hbm2ddl.auto","update");
+		
+		return properties;
+	}
+	@Autowired
+	@Bean
+	public SessionFactory getSessionFactory()
+	{
+		LocalSessionFactoryBuilder localSessionFactoryBuilder= 
+				new LocalSessionFactoryBuilder(getOracleDataSource());
+	
+		localSessionFactoryBuilder.addProperties(getHibernateProperties());
+		
+		localSessionFactoryBuilder.addAnnotatedClass(Blog.class);
+	localSessionFactoryBuilder.addAnnotatedClass(User.class);
+		localSessionFactoryBuilder.addAnnotatedClass(Job.class);
+		localSessionFactoryBuilder.addAnnotatedClass(Friend.class);
+		return localSessionFactoryBuilder.buildSessionFactory();
+	}
+
+	@Autowired
+	@Bean
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
+	{
+		HibernateTransactionManager transactionManager=
+				new HibernateTransactionManager();
+		transactionManager.setSessionFactory(sessionFactory);
+		
+		System.out.println("Data Source Created");
+		
+		return transactionManager;
+	}
+	
 }
 

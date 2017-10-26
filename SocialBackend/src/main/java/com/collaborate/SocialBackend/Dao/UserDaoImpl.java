@@ -25,7 +25,6 @@ public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	SessionFactory sessionFactory;
-    
 	public boolean addUser(User user) {
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 		return true;

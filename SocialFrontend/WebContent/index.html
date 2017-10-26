@@ -2,33 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-</head>
-<body ng-app="app">
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
-
-<p><a href="#!/">Main</a></p>
-<li><a href="#!/login" ng-hide="currentUser.userName" >Login</a></li>
-<li><a href="#!/register" ng-hide="currentUser.userName">Register</a></li>
-<li><a href="#!/job">Job</a></li>
-<li><a href="#!/logout" ng-click="logout()"  ng-show="currentUser.userName">Logout</a></li>
-<li><a href="#!/getsuggestedusers"  ng-click="listofsuggestedusers()"   ng-show="currentUser.userName">Get</a></li>
-<li><a ng-show="currentUser.userName">welcome {{currentUser.userName}}</a></li>
-
-<p>-------------------------------------------------------------------------------</p>
-<div ng-view ></div>
-</body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-cookies.js"></script>
@@ -37,6 +10,23 @@
 <script src="services/userservice.js"></script>
 <script src="controllers/friendcontroller.js"></script>
 <script src="services/friendservice.js"></script>
+
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+</head>
+<body ng-app="app">
+<p><a href="#!/">Main</a></p>
+<li><a href="#!/login" ng-hide="currentUser.userName" >Login</a></li>
+<li><a href="#!/register" ng-hide="currentUser.userName">Register</a></li>
+<li><a href="#!/job">Job</a></li>
+<li><a href="#!/logout" ng-click="logout()"  ng-show="currentUser.userName">Logout</a></li>
+<li><a ng-show="currentUser.userName">welcome {{currentUser.userName}}</a></li>
+ <li><a href="#!/pendingRequests" ng-hide="currentUser.userName==undefined">Friend Requests</a></li>
+<li><a href="#!/getSuggestedUsers" ng-hide="currentUser.userName==undefined">ADD</a></li>
+<li><a href="#!/listOfFriends" ng-hide="currentUser.userName==undefined" ng-click="listOfFriends()">List OF Friends</a></li>
+       
+<p>-------------------------------------------------------------------------------</p>
+<div ng-view ></div>
+</body>
 
 
 </html>

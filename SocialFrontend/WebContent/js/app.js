@@ -18,11 +18,19 @@ app.config (function($routeProvider){
 	})
 
 	
-	.when('/getsuggestedusers',{
-		templateUrl:'views/suggestedusers.html',
-		controller:'FriendController'
-
-	})
+	.when('/pendingRequests',{
+			templateUrl:'views/pendingRequest.html',
+			controller:'FriendController'
+		})
+		.when('/getSuggestedUsers',{
+			templateUrl:'views/suggestedUsers.html',
+			controller:'FriendController'
+			
+		})
+		.when('/listOfFriends',{
+			templateUrl:'views/listoffriends.html',
+			controller:'FriendController'
+		})
 	.when('/addjob',{
 		templateUrl:'views/jobform.html',
 		controller:'JobController'

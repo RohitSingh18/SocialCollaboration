@@ -13,20 +13,26 @@ import com.collaborate.SocialBackend.model.User;
 public class FriendServiceImpl implements FriendService {
 	
 	@Autowired
-	private FriendDao friendDao;
-
-	public List<User> listOfSuggestedUsers(String Username) {
-		return friendDao.listOfSuggestedUsers(Username);
+	private FriendDao friendDAO;
+	public List<User> listOfSuggestedUsers(String userName) {
+		return friendDAO.listOfSuggestedUsers(userName);
 	}
 
-	public void  friendRequest(Friend friend) {
-		// TODO Auto-generated method stub
+	public void friendRequest(Friend friend) {
+		friendDAO.friendRequest(friend);
 		
 	}
 
-	public List<Friend> pendingRequests(String username) {
-		return friendDao.pendingRequests(username);
+	public List<Friend> pendingRequests(String toID) {
+		return friendDAO.pendingRequests(toID);
+	}
+
+	public void updatePendingRequests(Friend friend) {
+		friendDAO.updatePendingRequest(friend);
 		
 	}
 
+	public List<String> listOfFriends(String userName) {
+		return friendDAO.listOfFriends(userName);
+	}
 }

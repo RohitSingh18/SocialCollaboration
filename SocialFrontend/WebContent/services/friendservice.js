@@ -4,15 +4,27 @@
 app.factory('FriendService',function($http){
 	var friendService={}
 	var BASE_URL="http://localhost:8080/SocialMiddleware"
-		friendService.listOfSuggestedUsers=function(){
-		return $http.get(BASE_URL + "/getsuggestedusers")
+		friendService.listOfSuggestedUsers = function()
+		{
+			return $http.get(BASE_URL+"/getSuggestedUsers")
+		}
+	friendService.sendFriendRequest = function(toID)
+	{
+		return $http.get(BASE_URL+"/friendRequest/"+toID)
 	}
-	friendService.sendFriendRequest=function(toId){
-		return $http.get(BASE_URL +"/friendrequest/"+toId)
+
+	friendService.pendingRequests= function()
+	{
+		return $http.get(BASE_URL+"/pendingRequests")
+	}
+	friendService.updatePendingRequest= function(request)
+	{
+		return $http.put(BASE_URL+"/updatePendingRequests",request)
+	}
+	friendService.listOfFriends=function()
+	{
+		return $http.get(BASE_URL+"/listOfFriends")
 	}
 	
-	friendService.listOfSuggestedUsers=function(){
-		return $http.get(BASE_URL +"/pendingrequests")
-	}
 	return friendService;
 })

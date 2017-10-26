@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.collaborate.SocialBackend.model.Blog;
 
 @Repository("blogDao")
+@org.springframework.transaction.annotation.Transactional
 public class BlogDaoImpl implements BlogDao {
 	
 	@Autowired
