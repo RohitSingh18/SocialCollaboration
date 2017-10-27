@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.collaborate.SocialBackend.model.Blog;
 
 @Repository("blogDao")
-@org.springframework.transaction.annotation.Transactional
+@Transactional
 public class BlogDaoImpl implements BlogDao {
 	
 	@Autowired
@@ -24,7 +24,7 @@ public class BlogDaoImpl implements BlogDao {
 	public boolean createBlog(Blog blog) {
 		try
 		{
-		sessionFactory.getCurrentSession().saveOrUpdate(blog);
+		sessionFactory.getCurrentSession().save(blog);
 		return true;
 		}
 			catch(Exception e)
