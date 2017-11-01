@@ -15,7 +15,7 @@ public class JobDaoImpl implements JobDao {
 	@Autowired
 	SessionFactory sessionFactory;
 	public void addJob(Job job) {
-		sessionFactory.getCurrentSession().saveOrUpdate(job);
+		sessionFactory.getCurrentSession().save(job);
 	}
 
 }

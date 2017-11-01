@@ -48,5 +48,11 @@ public class JobController {
 		}
 	}
 	
-
+	public ResponseEntity<?>getAllJobs(HttpSession session){
+		String username=(String)session.getAttribute("userName");
+		if(username==null){
+			Error error=new Error(10,"Unauthorized access");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		}
+		List<job> jobs=jobService.getAllJobs();
 }
