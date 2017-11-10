@@ -1,10 +1,10 @@
 /**
  * 
  */
-app.controller('JobController',function($scope,$location,Jobservice){
+app.controller('JobController',function($scope,$location,JobService){
 	$scope.addJob=function(){
 		JobService.addjob($scope.job).then(function(response){
-			console.log(response.data)//job object
+			console.log($scope.job)//job object
 			console.log(response.status)//200
 			$location.path('/home')
 		},function(response){
@@ -34,7 +34,8 @@ app.controller('JobController',function($scope,$location,Jobservice){
         	else{
         		$location.path('/addjob')
         	}
-		
-		})
-	}
+			
+		}
+	 )}
+});
 	

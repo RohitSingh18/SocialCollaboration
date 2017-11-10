@@ -1,5 +1,7 @@
 package com.collaborate.SocialMiddleware.RestController;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +29,17 @@ public class JobController {
 	private UserService userService;
 	@RequestMapping(value="/addjob",method=RequestMethod.POST)
 	
-	public ResponseEntity<?>addJob(@RequestBody Job job,HttpSession session){
+	public ResponseEntity<?> addJob(@RequestBody Job job,HttpSession session){
 		String username=(String)session.getAttribute("userName");
-		if(username==null){
-			Error error=new Error(10,"Unauthorized access");
-			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
-		}
-		User user=userService.getUserById(username);
-		if(!user.getRole().equals("ADMIN")){
-			Error error=new Error(6,"Access Denied");
-			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
-		}
+//		if(username==null){
+//			Error error=new Error(10,"Unauthorized access");
+//			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+//		}
+//		User user=userService.getUserById(username);
+//		if(!user.getRole().equals("ADMIN")){
+//			Error error=new Error(6,"Access Denied");
+//			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+//		}
 		try{
 			jobService.addJob(job);
 			return new ResponseEntity<Job>(job,HttpStatus.OK);
@@ -48,11 +50,14 @@ public class JobController {
 		}
 	}
 	
-	public ResponseEntity<?>getAllJobs(HttpSession session){
+	public ResponseEntity<?> getAllJobs(HttpSession session){
 		String username=(String)session.getAttribute("userName");
 		if(username==null){
 			Error error=new Error(10,"Unauthorized access");
 			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 		}
-		List<job> jobs=jobService.getAllJobs();
+		List<Job> jobs=jobService.getAllJobs();
+		return null;
+		
+}
 }

@@ -20,21 +20,33 @@
 <script src="services/userservice.js"></script>
 <script src="controllers/friendcontroller.js"></script>
 <script src="services/friendservice.js"></script>
+<script src="controllers/jobcontroller.js"></script>
+<script src="services/jobservice.js"></script>
+
 
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 </head>
 <body ng-app="app">
-<p><a href="#!/">Main</a></p>
-<li><a href="#!/login" ng-hide="currentUser.userName" >Login</a></li>
-<li><a href="#!/register" ng-hide="currentUser.userName">Register</a></li>
-<li><a href="#!/job">Job</a></li>
-<li><a href="#!/logout" ng-click="logout()"  ng-show="currentUser.userName">Logout</a></li>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SocialConnect</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#!/addjob" ng-show="currentUser.role=='ADMIN'">Job</a></li>
 <li><a ng-show="currentUser.userName">welcome {{currentUser.userName}}</a></li>
  <li><a href="#!/pendingRequests" ng-hide="currentUser.userName==undefined">Friend Requests</a></li>
 <li><a href="#!/getSuggestedUsers" ng-hide="currentUser.userName==undefined">ADD</a></li>
 <li><a href="#!/listOfFriends" ng-hide="currentUser.userName==undefined" ng-click="listOfFriends()">List OF Friends</a></li>
-       
-<p>-------------------------------------------------------------------------------</p>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#!/register" ng-hide="currentUser.userName"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#!/login" ng-hide="currentUser.userName"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#!/logout" ng-click="logout()"  ng-show="currentUser.userName">><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
 <div ng-view ></div>
 </body>
 

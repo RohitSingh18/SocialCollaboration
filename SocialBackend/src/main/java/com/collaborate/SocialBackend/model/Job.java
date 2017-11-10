@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 public class Job {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int jobid;
 	public int getId() {
-		return id;
+		return jobid;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.jobid = id;
 	}
 	public String getJobTitle() {
 		return jobTitle;

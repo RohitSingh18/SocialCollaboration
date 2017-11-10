@@ -2,12 +2,14 @@
  * 
  */
 app.factory('JobService',function($http){
-	var jobservice={}
-	var BASE_url="http://localhost:8080/SocialMiddleware"
-		JobService.addJob=function(job){
-		return $http.post(BASE_url+"/addJob",job)
+	var jobService={}
+	var BASE_URL="http://localhost:8080/SocialMiddleware"
+		jobService.addjob=function(job){
+		return $http.post(BASE_URL+"/addjob",job)
 	}
-	blogPostService.blogWaitingForApproval=function(){
-		return $http.get(BASE_URL+)
+	jobService.getalljobs=function()
+	{
+		return $http.get(BASE_URL+"/getalljobs")
 	}
-})
+	return jobService;
+})  

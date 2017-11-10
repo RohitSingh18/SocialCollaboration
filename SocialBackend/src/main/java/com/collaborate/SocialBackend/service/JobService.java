@@ -1,11 +1,18 @@
 package com.collaborate.SocialBackend.service;
 
-import com.collaborate.SocialMiddleware.RestController.List;
-import com.collaborate.SocialMiddleware.RestController.job;
+
+import java.util.List;
+
 import com.collaborate.SocialBackend.model.Job;
 
 public interface JobService {
 	void addJob(Job job);
-
-	List<job> getAllJobs();
+    List<Job> getAllJobs();
+    
+    public boolean updatejob(Job job);
+    
+    public boolean deletejob(int jobId);
+    
+    
+    
 }
