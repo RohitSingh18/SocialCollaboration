@@ -3,7 +3,7 @@
 <html>
 <head>
 
-       <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         
@@ -35,15 +35,15 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#!/addjob" ng-show="currentUser.role=='ADMIN'">Job</a></li>
-<li><a ng-show="currentUser.userName">welcome {{currentUser.userName}}</a></li>
- <li><a href="#!/pendingRequests" ng-hide="currentUser.userName==undefined">Friend Requests</a></li>
-<li><a href="#!/getSuggestedUsers" ng-hide="currentUser.userName==undefined">ADD</a></li>
-<li><a href="#!/listOfFriends" ng-hide="currentUser.userName==undefined" ng-click="listOfFriends()">List OF Friends</a></li>
+<li><a href="#!/pendingRequests" ng-hide="currentUser.userName==undefined">Friend Requests</a></li>
+<li><a href="#!/getSuggestedUsers" ng-hide="currentUser.userName==undefined">Add Friends</a></li>
+<li><a href="#!/listOfFriends" ng-hide="currentUser.userName==undefined" ng-click="listOfFriends()">List Of Friends</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+    <li><a ng-show="currentUser.userName"><span class="glyphicon glyphicon-user">Hi,{{currentUser.userName}}</a></li>
       <li><a href="#!/register" ng-hide="currentUser.userName"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="#!/login" ng-hide="currentUser.userName"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="#!/logout" ng-click="logout()"  ng-show="currentUser.userName">><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="#!/logout" ng-click="logout()"  ng-show="currentUser.userName"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
     </ul>
   </div>
 </nav>

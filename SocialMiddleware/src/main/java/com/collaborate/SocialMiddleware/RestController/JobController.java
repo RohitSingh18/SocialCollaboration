@@ -41,7 +41,7 @@ public class JobController {
 //			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 //		}
 		try{
-			jobService.addJob(job);
+			jobService.addjob(job);
 			return new ResponseEntity<Job>(job,HttpStatus.OK);
 			
 		}catch(Exception e){

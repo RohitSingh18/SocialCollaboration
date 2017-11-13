@@ -12,13 +12,21 @@ import com.collaborate.SocialBackend.model.Job;
 public class JobServiceImpl implements JobService {
 	@Autowired
 	JobDao jobDao;
-	public void addJob(Job job) {
-		// TODO Auto-generated method stub
-
-	}
 	public List<Job> getAllJobs() {
 		// TODO Auto-generated method stub
 		return jobDao.getAllJobs();
+	}
+	public boolean updatejob(Job job) {
+		return jobDao.updateJob(job);
+	}
+	public boolean deletejob(int jobId) {
+		return jobDao.deletejob(jobId);
+	}
+	public boolean addjob(Job job) {
+		return jobDao.addJob(job);
+	}
+	public Job getjobById(int jobId) {
+		return jobDao.getjobById(jobId);
 	}
     
 }
