@@ -3,15 +3,9 @@
 <table class="table table-striped">
 <tbody>
 <tr ng-repeat="request in pendingRequest">
-	<td>{{request.fromID}}</td>
+	<td>{{request.fromId}}</td>
 	<td><a class="btn btn-primary" ng-click="updatePendingRequest(request,'A')">Accept</a></td>
-		<td><a class="btn btn-danger" ng-click="updatePendingRequest(request,'D')">Delete</a></td>
-	
-
+	<td><a class="btn btn-danger" ng-click="updatePendingRequest(request,'D')">Delete</a></td>	
 </tr>
-
-
-
 </tbody>
-
 </table>

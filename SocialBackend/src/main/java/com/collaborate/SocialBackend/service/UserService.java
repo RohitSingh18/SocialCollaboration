@@ -12,5 +12,6 @@ public interface UserService {
 	void updateUser(User user);
 	public User getUserById(String username);
 	public List<User> getallusers();
+	
 
 }

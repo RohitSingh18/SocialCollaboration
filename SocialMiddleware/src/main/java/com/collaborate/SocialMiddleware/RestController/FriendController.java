@@ -80,7 +80,7 @@ public class FriendController {
 	@RequestMapping(value="/listOfFriends",method=RequestMethod.GET)
 	public ResponseEntity<?> listOfFriends(HttpSession httpSession) 
 	{
-		String userName = (String)httpSession.getAttribute("firstName");
+		String userName = (String)httpSession.getAttribute("userName");
 		if(userName==null)
 		{
 			Error error = new Error(5,"Unauthorized Access");

@@ -39,4 +39,12 @@ app.controller('UserController',function($scope,UserService,$location,$rootScope
 		})
 	}
 	
+	if($rootScope.currentUser!=undefined){
+		UserService.getUser().then(function(response){
+			$scope.user=response.data;
+		},function(response){
+			
+		})
+		}
+	
 });

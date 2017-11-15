@@ -96,5 +96,19 @@ public class UserController {
 		session.invalidate();
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
+@RequestMapping(value="/getUser",method=RequestMethod.GET)
+	
+	public ResponseEntity<?> getUser(HttpSession session)
+	{
+		String userName = (String)session.getAttribute("firstName");
+		if(userName==null)
+		{
+			Error error = new Error(7,"UNAUTHORIZED");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		
+		}
+		User user = userService.getUserById(userName);
+		return new ResponseEntity<User>(user,HttpStatus.OK);
 
+	}
 }
