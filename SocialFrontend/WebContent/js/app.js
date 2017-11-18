@@ -38,6 +38,19 @@ app.config (function($routeProvider){
 	.when('/getblogs',{
 		templateUrl:'views/bloglist.html',
 		controller:'BlogController'
+	})
+	     .when('/getapproveform/:id', {
+        templateUrl : 'Blog/blogapprovalform.html',
+        controller:'BlogDetailController'
+    
+    })
+
+	.when('/profilepic',{
+	templateUrl:'ProfilePicture/uploadpicture.html'
+	})
+	.when('/myprofile',{
+		templateUrl:'User/profile.html',
+			controller:'UserController'
 	});
 	
 

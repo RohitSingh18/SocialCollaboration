@@ -35,7 +35,6 @@
       <a class="navbar-brand" href="#">SocialConnect</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
       <li><a href="#!/addblog" ng-show="currentUser.role=='user'">Blog</a></li>
       <li><a href="#!/addjob" ng-show="currentUser.role=='ADMIN'">Job</a></li>
 <li><a href="#!/pendingRequests" ng-hide="currentUser.userName==undefined">Friend Requests</a></li>
@@ -43,7 +42,10 @@
 <li><a href="#!/listOfFriends" ng-hide="currentUser.userName==undefined" ng-click="listOfFriends()">List Of Friends</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+	<img align='center' ng-src="http://localhost/CollaborationMiddle/getprofilepic/{{currentUser.userName}}" class="img-responsive" alt="">
+    </li>
     <li><a ng-show="currentUser.userName"><span class="glyphicon glyphicon-user">Hi,{{currentUser.userName}}</a></li>
+    
       <li><a href="#!/register" ng-hide="currentUser.userName"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="#!/login" ng-hide="currentUser.userName"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       <li><a href="#!/logout" ng-click="logout()"  ng-show="currentUser.userName"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
@@ -52,6 +54,4 @@
 </nav>
 <div ng-view ></div>
 </body>
-
-
 </html>
