@@ -5,7 +5,7 @@ var app=angular.module("app",['ngRoute','ngCookies'])
 app.config (function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'views/home.html',
+		templateUrl:'views/login.html',
 		controller:'UserController'
 	})
 	.when('/login',{
@@ -51,9 +51,12 @@ app.config (function($routeProvider){
 	.when('/myprofile',{
 		templateUrl:'User/profile.html',
 			controller:'UserController'
-	});
+	})
+	.when('/chat',{
+		templateUrl:'Chat/chat.html',
+		controller:'ChatController'
+	});			
 	
-
 })
 app.run(function($rootScope,$cookieStore,UserService,$location)
 {

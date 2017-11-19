@@ -6,10 +6,10 @@ import com.collaborate.SocialBackend.model.BlogComment;
 
 public interface BlogCommentDao {
 
-	public boolean createBlogComment(BlogComment blogComment);
-	public boolean editBlog(int BlogCommentID);
-	public boolean deleteBlog(int BlogCommentID);
-	public List<BlogComment> getAllBlogComments();
-	public BlogComment getBlogComment(int BlogCommentID);
-	public boolean approveBlogComment(BlogComment blogComment);
+	public boolean createBlogcomment(BlogComment blogcomment);
+	public boolean editBlogcomment(BlogComment blogcomment);
+	public boolean deleteBlogcomment(int blogcommentId);
+	public BlogComment getBlogcomment(int blogcommentId);
+	public List<BlogComment> getBlogcomments(int blogId);
+
 }
