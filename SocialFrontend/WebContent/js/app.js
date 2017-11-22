@@ -7,7 +7,12 @@ app.config (function($routeProvider){
 	.when('/',{
 		templateUrl:'views/login.html',
 		controller:'UserController'
+		
 	})
+	 .when('/addblog', {
+        templateUrl : 'views/addblog.html',
+        controller:'BlogController'
+	 })
 	.when('/login',{
 		templateUrl:'views/login.html',
 		controller:'UserController'
@@ -44,9 +49,13 @@ app.config (function($routeProvider){
         controller:'BlogDetailController'
     
     })
+    .when('/getalljobs',{
+    	templateUrl:'views/joblist.html',
+    	controller:'JobController'
+    })
 
 	.when('/profilepic',{
-	templateUrl:'ProfilePicture/uploadpicture.html'
+	templateUrl:'views/uploadpicture.html'
 	})
 	.when('/myprofile',{
 		templateUrl:'User/profile.html',

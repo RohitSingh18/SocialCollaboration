@@ -87,13 +87,13 @@ public class BlogController {
 	}
 	
 	
-	
-	@GetMapping(value="/test")
-	public ResponseEntity <String> testmethod()
-	{
-		return new ResponseEntity <String> ("Test controller",HttpStatus.OK);
-		
-	}
+//	
+//	@GetMapping(value="/test")
+//	public ResponseEntity <String> testmethod()
+//	{
+//		return new ResponseEntity <String> ("Test controller",HttpStatus.OK);
+//		
+//	}
 
 }
 

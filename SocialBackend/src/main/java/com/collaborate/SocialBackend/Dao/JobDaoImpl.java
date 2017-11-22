@@ -24,7 +24,7 @@ public class JobDaoImpl implements JobDao {
 			return listjob;
 	   }
        public boolean addJob(Job job) {
-			// TODO Auto-generated method stub
+		
 			sessionFactory.getCurrentSession().save(job);
 			return true;
 		}

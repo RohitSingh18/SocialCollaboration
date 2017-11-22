@@ -31,7 +31,7 @@ app.controller('UserController',function($scope,UserService,$location,$rootScope
 			alert('Login succesfull')
 			$rootScope.currentUser=response.data
 		//	$cookieStore.put('userDetails',response.data)
-			$location.path('/')
+			$location.path('/home')
 		},function(response){
 			$scope.error=response.data.message
 			$location.path('/login')
@@ -46,5 +46,22 @@ app.controller('UserController',function($scope,UserService,$location,$rootScope
 			
 		})
 		}
+	
+	$scope.updateUser = function(){
+		UserService.updateUser($scope.user)
+				.then(function(response){
+					alert(" Successfully Updated");
+					$location.path('/');
+				},function(response){
+					if(response.status==401)
+					{
+					$location.path('/login')
+					}
+				else{
+					$scope.error = response.data;
+			    	$location.path('/edituser')
+				}
+				})
+	}
 	
 });

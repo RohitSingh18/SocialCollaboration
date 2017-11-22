@@ -7,9 +7,9 @@ app.factory('JobService',function($http){
 		jobService.addjob=function(job){
 		return $http.post(BASE_URL+"/addjob",job)
 	}
-	jobService.getalljobs=function()
+	jobService.getAllJobs=function()
 	{
-		return $http.get(BASE_URL+"/getalljobs")
+		return $http.get(BASE_URL+"/getallJobs")
 	}
 	return jobService;
 })  

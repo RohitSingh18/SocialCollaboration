@@ -2,7 +2,7 @@ package com.collaborate.SocialBackend.model;
 
 import java.util.Date;
 
-public class OutputMessage implements Message {
+public class OutputMessage extends Message {
 	
 	private static final long serialVersionUID = 1L;
 	private Date time;

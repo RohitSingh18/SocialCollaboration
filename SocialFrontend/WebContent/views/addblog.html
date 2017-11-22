@@ -2,14 +2,52 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create Blog</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+	
 </head>
-<body>
-<h3>Create Blog</h3>
-<form>
-<input type="text">
-<input type="textarea" rows="5" cols="20" >
-<input type="submit" ng-click="create()">
-</form>
+<body  style="padding-top:20px" align="left">
+
+
+<div class="col-sm-8" >
+	<div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="well well-sm">
+          <form class="form-horizontal" >
+          <fieldset>
+            <legend class="text-center">Add Blog</legend>
+    
+            <!-- Name input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="blog.blogName">Blog Name</label>
+              <div class="col-md-9">
+                <input id="name" type="text" placeholder="Blog name" class="form-control" ng-model="blog.blogName">
+              </div>
+            </div>
+    
+            <!--blogContent input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="blog.blogContent">blog Content</label>
+              <div class="col-md-9">
+                <textarea  type="text" placeholder="blog Content" class="form-control"  rows="5" ng-model="blog.blogContent"></textarea>
+              </div>
+            </div>
+    
+         
+            <!-- Form actions -->
+            <div class="form-group">
+              <div class="col-md-12 text-right">
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="postblog()" >ADD BLOG</button>
+              </div>
+            </div>
+          </fieldset>
+          </form>
+        </div>
+      </div>
+	</div>
+</div>
+
+     
 </body>
 </html>

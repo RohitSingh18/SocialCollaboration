@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.collaborate.SocialBackend.model.User;
 import com.collaborate.SocialBackend.model.Error;
 import com.collaborate.SocialBackend.service.UserService;
@@ -100,7 +99,7 @@ public class UserController {
 	
 	public ResponseEntity<?> getUser(HttpSession session)
 	{
-		String userName = (String)session.getAttribute("firstName");
+		String userName = (String)session.getAttribute("userName");
 		if(userName==null)
 		{
 			Error error = new Error(7,"UNAUTHORIZED");

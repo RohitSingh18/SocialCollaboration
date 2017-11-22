@@ -1,0 +1,20 @@
+
+<div  ng-init="getAllJobs()">
+	<B>list of jobs </B>
+	<table class="table table-striped" >
+		<thead>
+			<tr>
+				<th>jobTitle</th>
+				<th>posted on</th>
+				<th>Skills Required</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="job in jobs">
+				<td><a href="" ng-click="getJobDetails(job.jobId)">{{job.jobTitle}}</a></td>
+				<td>{{job.postedOn|date:'medium'}}</td>
+				<td>{{job.skillsRequired}}</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>

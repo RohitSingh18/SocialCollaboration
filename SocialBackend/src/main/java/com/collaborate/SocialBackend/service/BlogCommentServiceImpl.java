@@ -17,7 +17,7 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 
 	public List<BlogComment> getBlogcomments(int blogId) {
 		// TODO Auto-generated method stub
-		return blogcommentdao.getBlogcomment(blogId);
+		return blogcommentdao.getBlogcomments(blogId);
 	}
 
 }

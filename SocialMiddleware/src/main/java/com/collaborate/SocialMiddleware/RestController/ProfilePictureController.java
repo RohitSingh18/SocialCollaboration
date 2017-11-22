@@ -56,7 +56,7 @@ public class ProfilePictureController {
 			byte[] imagefiles = profilepic.getImage(); // image
 
 			try {
-				String path = "E:/new/workspace/CollaborationFront/WebContent/resources/images/"
+				String path = "C:/Users/Recon/Project2/SocialFrontend/WebContent/resources/img/"
 						+ user.getUserName();
 				System.out.println("Path: " + path);
 				File files = new File(path);
@@ -70,7 +70,7 @@ public class ProfilePictureController {
 
 		}
 		 try {
-			    http.sendRedirect("http://localhost/CollaborationFront/index.html");
+			    http.sendRedirect("http://localhost:8080/SocialFrontend/index.html");
 			  } catch (IOException ex) {
 
 			  }
@@ -86,9 +86,9 @@ public class ProfilePictureController {
 
 		ProfilePicture profilePic=profilepicturedao.getProfilePic(username);
 
-		String name = profilePic.getFileName();
-		System.out.println("Name: " + name);
-		System.out.println("File: " + profilePic.getImage());
+//		String name = profilePic.getFileName();
+//		System.out.println("Name: " + name);
+//		System.out.println("File: " + profilePic.getImage());
 		byte[] imagefiles = profilePic.getImage();
 		return new ResponseEntity<byte[]>(imagefiles, HttpStatus.OK);
 	}

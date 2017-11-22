@@ -20,7 +20,7 @@ import com.collaborate.SocialBackend.Dao.BlogCommentDao;
 import com.collaborate.SocialBackend.model.BlogComment;
 import com.collaborate.SocialBackend.model.User;
 import com.collaborate.SocialBackend.service.UserService;
-
+import com.collaborate.SocialBackend.model.Error;
 @RestController
 public class BlogCommentController {
 	
@@ -41,7 +41,7 @@ public class BlogCommentController {
 			Error error=new Error(6,"unauthorised access");
 			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 		    }
-	   	User user=UserService.getuser(userName);
+	   	User user=userService.getUserById(userName);
 	   	blogComment.setCommentedBy(user);
 		blogComment.setCommentDate(new Date());
 		try

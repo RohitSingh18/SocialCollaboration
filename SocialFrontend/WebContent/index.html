@@ -23,10 +23,13 @@
 <script src="controllers/jobcontroller.js"></script>
 <script src="services/jobservice.js"></script>
 <script src="controllers/blogcontroller.js"></script>
+<script src="controllers/blogDetailsController.js"></script>
 <script src="services/blogservice.js"></script>
+<script src="services/chatservice.js"></script>
+<script src="controllers/chatcontroller.js"></script>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 </head>
-<body ng-app="app">
+<body ng-app="app" background="">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -34,32 +37,38 @@
     </div>
     <ul class="nav navbar-nav">
     <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-hide="currentUser.userName==undefined">Blog</a>
-      <li><a href="#!/addblog" ng-show="currentUser.role=='user'">Blog</a></li>
+          <a class="dropdown-toggle" data-toggle="dropdown" ng-hide="currentUser.userName==undefined">Blog</a>
+      <ul class="dropdown-menu">
+      <li><a href="#!/addblog">Add Blog</a></li>
+      <li><a href="#!/getblogs">Get All Blogs</a></li>
+      </ul>
 
       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-hide="currentUser.userName==undefined">Job</a>
+          <a class="dropdown-toggle" data-toggle="dropdown" ng-hide="currentUser.userName==undefined">Job</a>
           <ul class="dropdown-menu">
       <li><a href="#!/addjob" ng-show="currentUser.role=='ADMIN'">Add job</a></li>
+      <li><a href="#!/getalljobs" ng-hide="currentUser.userName==undefined">All jobs</a></li>
       </ul>
 
        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-hide="currentUser.userName==undefined">Friends</a>
+          <a class="dropdown-toggle" data-toggle="dropdown" ng-hide="currentUser.userName==undefined">Friends</a>
           <ul class="dropdown-menu">
           <li><a href="#!/pendingRequests" ng-hide="currentUser.userName==undefined">Friend Requests</a></li>
           <li><a href="#!/getSuggestedUsers" ng-hide="currentUser.userName==undefined">Add Friends</a></li>
           <li><a href="#!/listOfFriends" ng-hide="currentUser.userName==undefined" ng-click="listOfFriends()">List Of Friends</a></li>
     </ul>
     
-    <li><img align='center' ng-src="http://localhost/CollaborationMiddle/getprofilepic/{{currentUser.userName}}" class="img-responsive" alt=""></li>
+    <li><img align='center' ng-hide="currentUser.userName==undefined"ng-src="http://localhost:8080/SocialMiddleware/getprofilepic/{{currentUser.userName}}" class="img-responsive img-circle" alt="" style="width: 35px;height:35px"></li>
+ 
+    
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi,{{currentUser.userName}}<span class="glyphicon glyphicon-user pull-right"></span></a>
+          <a  class="dropdown-toggle" data-toggle="dropdown">Hi,{{currentUser.userName}}<span class="glyphicon glyphicon-user pull-right"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#/profilepic" class="btn btn-success btn-sm" ng-show="currentUser.userName"> Change Picture</a></li>
-			<li><a href="#/edituser" ng-show="currentUser.userName" class="btn btn-danger btn-sm">Edit Profile</a></li>
+            <li><a href="#!/profilepic" class="btn btn-success btn-sm" ng-show="currentUser.userName"> Change Picture</a></li>
+			<li><a href="#!/edituser" ng-show="currentUser.userName" class="btn btn-danger btn-sm">Edit Profile</a></li>
             <li class="divider"></li>
            
-            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+            <li><a href="#!/register">Sign Up<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
             <li class="divider"></li>
             
             <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>

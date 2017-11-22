@@ -16,8 +16,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 
 import com.collaborate.SocialBackend.model.Blog;
+import com.collaborate.SocialBackend.model.BlogComment;
 import com.collaborate.SocialBackend.model.Friend;
 import com.collaborate.SocialBackend.model.Job;
+import com.collaborate.SocialBackend.model.ProfilePicture;
 import com.collaborate.SocialBackend.model.User;
 
 @Configuration
@@ -65,6 +67,8 @@ public class DBConfig {
 	localSessionFactoryBuilder.addAnnotatedClass(User.class);
 		localSessionFactoryBuilder.addAnnotatedClass(Job.class);
 		localSessionFactoryBuilder.addAnnotatedClass(Friend.class);
+		localSessionFactoryBuilder.addAnnotatedClass(ProfilePicture.class);
+		localSessionFactoryBuilder.addAnnotatedClass(BlogComment.class);
 		return localSessionFactoryBuilder.buildSessionFactory();
 	}
 

@@ -22,8 +22,8 @@ app.controller('JobController',function($scope,$location,JobService){
 		
 		})
 	}
-	function getAllJobs(){
-		JobService.getAllJobs.then(function(response){
+	$scope.getAllJobs=function(){
+		JobService.getAllJobs().then(function(response){
 			$scope.jobs=response.data//List<job>
 		},function(response){
 			if(response.status==401)
@@ -37,5 +37,6 @@ app.controller('JobController',function($scope,$location,JobService){
 			
 		}
 	 )}
+	
 });
 	
