@@ -6,7 +6,7 @@
 app.service('ChatService', function($q, $timeout,$rootScope) {
 
 	console.log('starting chatService')
-	var BASE_URL = "http://localhost/CollaborationMiddle";
+	var BASE_URL ="http://localhost:8080/SocialMiddleware";
 
 	var service = {}, listener = $q.defer(), socket = {
 		client : null,

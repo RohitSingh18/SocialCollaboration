@@ -2,16 +2,34 @@
  * 
  */
 app.factory('BlogService',function($http){
-	var blogservice={}
-	var BASE_url="http://localhost:8080/SocialMiddleware"
-		BlogService.addBlog=function(blog){
-		return $http.post(BASE_URL + "/addblog",blog)
+
+	var blogService={}
+	var BASE_URL="http://localhost:8080/SocialMiddleware"
+	blogService.postblog=function(blog)
+		{
+		  return $http.post(BASE_URL + "/createblog",blog)
+	    }
+	blogService.blogsWaitingForApproval=function(){
+		return $http.get(BASE_URL+"/getblogs/"+"NA")
 	}
-	blogPostService.blogsWaitingForApproval=function(){
-		return $http.get(BASE_URL+"/getblogs/"+0)
+	blogService.blogsApproved=function(){
+		return $http.get(BASE_URL+"/getblogs/"+"A")
 	}
-	blogPostService.blogsApproved=function(){
-		return $http.get(BASE_URL)
+	blogService.getBlogById=function(id){
+		return $http.get(BASE_URL+"/getblogbyid/"+id)
+	}  
+	blogService.updateBlog=function(blog){
+		return $http.put(BASE_URL + "/update",blog)	
 	}
+	blogService.updateLikes=function(blog){
+		return $http.put(BASE_URL + "/update",blog)	
+	}
+	blogService.addComment=function(blogcomment){
+		return $http.post(BASE_URL + "/addcomment",blogcomment)	
+	}
+	blogService.getBlogComments=function(blogid){
+		return $http.get(BASE_URL + "/getcomments/"+blogid)	
+	}
+	return blogService;
 	
 })

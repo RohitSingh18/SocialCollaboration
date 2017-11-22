@@ -44,13 +44,13 @@ public class BlogDaoTestCase {
 	@Test
 	public void getBlogByBlogID()
 	{
-		assertNotNull("Problem getting blog",blogDao.getBlog(18));
+		assertNotNull("Problem getting blog",blogDao.getBlogById(18));
 	}
    
 	@Ignore
 	@Test
 	public void EditBlog(){
-		Blog blog=blogDao.getBlog(18);
+		Blog blog=blogDao.getBlogById(18);
 		//blog.setBlogID(18);
 		blog.setBlogName("Bravo");
 		blog.setBlogContent("Bravo is here");

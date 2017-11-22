@@ -3,6 +3,8 @@ package com.collaborate.SocialBackend.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -15,7 +17,8 @@ import org.springframework.stereotype.Component;
 public class Blog {
 	
 	@Id
-	private Integer blogID;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer blogId;
 	private String blogName;
 	private String blogContent;
 	private String status;
@@ -49,11 +52,11 @@ public class Blog {
 		this.createDate = createDate;
 	}
 	private Date createDate;
-	public Integer getBlogID() {
-		return blogID;
+	public Integer getBlogId() {
+		return blogId;
 	}
-	public void setBlogID(Integer blogID) {
-		this.blogID = blogID;
+	public void setBlogID(Integer blogId) {
+		this.blogId = blogId;
 	}
 	public String getBlogName() {
 		return blogName;

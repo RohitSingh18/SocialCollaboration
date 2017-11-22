@@ -1,12 +1,11 @@
 /**
  * 
  */
-var app=angular.module("app",['ngRoute','ngCookies'])
+var app=angular.module("app",['ngRoute','ngCookies']);
 app.config (function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'views/login.html',
-		controller:'UserController'
+		templateUrl:'views/home.html'
 		
 	})
 	 .when('/addblog', {
@@ -45,7 +44,7 @@ app.config (function($routeProvider){
 		controller:'BlogController'
 	})
 	     .when('/getapproveform/:id', {
-        templateUrl : 'Blog/blogapprovalform.html',
+        templateUrl : 'views/blogapprovalform.html',
         controller:'BlogDetailController'
     
     })
@@ -58,11 +57,11 @@ app.config (function($routeProvider){
 	templateUrl:'views/uploadpicture.html'
 	})
 	.when('/myprofile',{
-		templateUrl:'User/profile.html',
+		templateUrl:'views/profile.html',
 			controller:'UserController'
 	})
 	.when('/chat',{
-		templateUrl:'Chat/chat.html',
+		templateUrl:'views/chat.html',
 		controller:'ChatController'
 	});			
 	

@@ -11,36 +11,43 @@ import com.collaborate.SocialBackend.model.Blog;
 @Service
 public class BlogServiceImpl implements BlogService {
 	@Autowired
-	private BlogDao blogdao;
+	
+public BlogDao blogDao;
 
-	public boolean createBlog(Blog blog) {
-		// TODO Auto-generated method stub
-		return blogdao.createBlog(blog);
-	}
+public boolean createBlog(Blog blog) {
 
-	public boolean editBlog(Blog blog) {
-		// TODO Auto-generated method stub
-		return blogdao.editBlog(blog);
-	}
+	return blogDao.createBlog(blog);
+}
 
-	public boolean deleteBlog(int BlogID) {
-		// TODO Auto-generated method stub
-		return blogdao.deleteBlog(BlogID);
-	}
+public boolean editBlog(Blog blog) {
 
-	public List<Blog> getAllBlogs() {
-		// TODO Auto-generated method stub
-		return blogdao.getAllBlogs();
-	}
+	return blogDao.editBlog(blog);
+}
 
-	public Blog getBlog(int BlogID) {
-		// TODO Auto-generated method stub
-		return blogdao.getBlog(BlogID);
-	}
+public boolean deleteBlog(Integer blogId) {
+	
+	return blogDao.deleteBlog(blogId);
+}
 
-	public boolean approveBlog(Blog blog) {
-		// TODO Auto-generated method stub
-		return blogdao.approveBlog(blog);
-	}
+public Blog getBlogById(Integer blogId) {
+	
+	return blogDao.getBlogById(blogId);
+}
+
+public List<Blog> getAllBlogs() {
+	
+	return blogDao.getAllBlogs();
+}
+
+public boolean approveBlog(Blog blog) {
+	
+	return blogDao.approveBlog(blog);
+}
+public List<Blog> getBlogs(String status )
+{
+	return blogDao.getBlogs(status);
+}
+
+
 
 }

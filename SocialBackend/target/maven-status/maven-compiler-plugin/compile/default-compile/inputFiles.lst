@@ -2,8 +2,6 @@ C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBacken
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\UserDao.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\UserService.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\Friend.java
-C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\ForumComment.java
-C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\Forum.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\ProfilePictureDao.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\JobDao.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\BlogCommentDaoImpl.java
@@ -11,13 +9,16 @@ C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBacken
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\App.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\FriendDao.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\User.java
+C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\BlogCommentService.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\Job.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\ProfilePicture.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\BlogDaoImpl.java
+C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\Message.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\Blog.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\JobService.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\JobDaoImpl.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\config\DBConfig.java
+C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\BlogCommentServiceImpl.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\ProfilePictureDaoImpl.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\UserDaoImpl.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\Error.java
@@ -27,5 +28,6 @@ C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBacken
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\BlogServiceImpl.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\FriendService.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\UserServiceImpl.java
+C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\model\OutputMessage.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\service\BlogService.java
 C:\Users\Recon\Project2\SocialBackend\src\main\java\com\collaborate\SocialBackend\Dao\FriendDaoImpl.java

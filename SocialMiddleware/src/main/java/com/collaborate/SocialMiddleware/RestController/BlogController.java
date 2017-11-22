@@ -1,6 +1,9 @@
 package com.collaborate.SocialMiddleware.RestController;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,9 +16,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.collaborate.SocialBackend.model.Error;
 import com.collaborate.SocialBackend.Dao.BlogDao;
 import com.collaborate.SocialBackend.model.Blog;
-import com.collaborate.SocialBackend.model.Error;
+import com.collaborate.SocialBackend.model.User;
+import com.collaborate.SocialBackend.service.BlogService;
+import com.collaborate.SocialBackend.service.UserService;
+
 
 @RestController
 public class BlogController {
@@ -24,35 +31,80 @@ public class BlogController {
 	BlogDao blogDao;
 	
 	
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private BlogService blogService;
+	
+	@Autowired
+	 HttpSession session;
+	
+	
 	@GetMapping(value="/getallblogs")
 	public ResponseEntity<ArrayList<Blog>> getallblogs()
 	{
 		ArrayList<Blog> listblogs=new ArrayList<Blog>();
-		listblogs=(ArrayList<Blog>)blogDao.getAllBlogs();
+		listblogs=(ArrayList<Blog>)blogService.getAllBlogs();
 		return new ResponseEntity<ArrayList<Blog>>(listblogs,HttpStatus.OK);
 		
 	}
+	@GetMapping(value="/getblogs/{status}")
+	public ResponseEntity<?> getBlogs(@PathVariable String status,HttpSession session)
+	{
+		String username=(String)session.getAttribute("userName");
+		if(username==null)
+		{
+			Error error=new Error(6,"unauthorised access");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		}
+		
+     	List<Blog> blog=blogService.getBlogs(status);
+     	return new ResponseEntity<List<Blog>>(blog,HttpStatus.OK);
 	
+	}
 	@PostMapping(value="/createblog")
 	public ResponseEntity <?> createblog(@RequestBody Blog blog)
 	{
+ 
+		String userName=(String) session.getAttribute("userName");
+	    System.out.println("user:-"+userName);
+		if(userName==null)
+		{
+			Error error=new Error(6,"unauthorised access");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		}
+     
 		blog.setCreateDate(new java.util.Date());
-		blog.setStatus("NA");
-		blog.setLikes(0);
-		
-		if(blogDao.createBlog(blog))
-		{  return new ResponseEntity <Blog> (blog,HttpStatus.OK);}
-		
-		else
-			
-		{ Error error=new Error(4,"error creating blog");
-			return new ResponseEntity <Error> (error,HttpStatus.NOT_ACCEPTABLE);}
+		User postedby=userService.getUserById(userName);
+	    blog.setPostedBy(postedby);
+		try
+		{ blogService.createBlog(blog);
+		  return new ResponseEntity<Blog>(blog,HttpStatus.OK); 
+		}
+		catch(Exception e)
+		{  Error error=new Error(9,"unable to add blog");
+		   return new ResponseEntity<Error>(error,HttpStatus.INTERNAL_SERVER_ERROR);
+		   }
 	
+	}
+	@GetMapping(value="/getblogbyid/{id}")
+	public ResponseEntity<?> grtBlogById(@PathVariable int id,HttpSession session)
+	{
+		String userName=(String) session.getAttribute("userName");
+	    if(userName==null)
+		{
+			Error error=new Error(6,"unauthorised access");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		}
+	    Blog blog=blogService.getBlogById(id);
+	    return new ResponseEntity<Blog>(blog,HttpStatus.OK);
+		
 	}
 	@PutMapping(value="/approveblog/{blogId}")
 	public ResponseEntity <String> approveblog(@PathVariable("blogId") int blogId)
-	{   Blog blog=blogDao.getBlog(blogId);
-		if(blogDao.approveBlog(blog))
+	{   Blog blog=blogService.getBlogById(blogId);
+		if(blogService.approveBlog(blog))
 		{
 		return new ResponseEntity <String> ("blog approved",HttpStatus.OK);
 		}
@@ -66,37 +118,32 @@ public class BlogController {
 	@DeleteMapping("/deleteBlog/{blogId}")
 	public ResponseEntity<String> deleteBlog (@PathVariable("blogId")Integer blogId)
 	{
-		if(blogDao.deleteBlog(blogId))
+		if(blogService.deleteBlog(blogId))
 		{return new ResponseEntity<String> ("Blog Deleted",HttpStatus.OK);}
 		 else
 		 {return new ResponseEntity <String> ("problem in deleting",HttpStatus.NOT_ACCEPTABLE); }
 		
 
 	}
-	@PutMapping(value="/editBlog/{blogId}")
-	public ResponseEntity<String> editBlog (@PathVariable("blogId")Integer blogId,@RequestBody Blog blog)
-	{
-		Blog editedblog=blogDao.getBlog(blogId);
-		editedblog.setBlogName(blog.getBlogName());
-		editedblog.setBlogContent(blog.getBlogContent());
-		editedblog.setCreateDate(new java.util.Date()); 
-		if(blogDao.editBlog(editedblog))
-		 {return new ResponseEntity <String> ("blog edited",HttpStatus.OK);}
-		 else
-		 {return new ResponseEntity <String> ("problem in editing",HttpStatus.NOT_ACCEPTABLE); }
+	@PutMapping(value="/update")
+	public ResponseEntity<?> editBlog (@RequestBody Blog blog)
+	{  String userName=(String) session.getAttribute("userName");
+       System.out.println("user:-"+userName);
+    	if(userName==null)
+	    {
+		Error error=new Error(6,"unauthorised access");
+		return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+	    }
+    	if(blog.getStatus()=="NA" && blog.getRejectionReason()==null)
+    	{ blog.setRejectionReason("Not Mentioned");  }
+	    blogService.editBlog(blog);
+	    return new ResponseEntity <Blog> (blog,HttpStatus.OK); 
 	}
 	
 	
-//	
-//	@GetMapping(value="/test")
-//	public ResponseEntity <String> testmethod()
-//	{
-//		return new ResponseEntity <String> ("Test controller",HttpStatus.OK);
-//		
-//	}
 
+	
 }
-
 	
 
 
