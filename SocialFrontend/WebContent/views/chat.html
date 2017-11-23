@@ -20,7 +20,7 @@
                 <div class="panel-body">
                     <ul class="chat">
                         <li class="left clearfix" data-ng-repeat="message in messages | orderBy:'time':true"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=F" alt="User Avatar" class="img-circle" />
+                           <img src="http://placehold.it/50/55C1E7/fff&text=F" alt="User Avatar" class="img-square" /> 
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
@@ -39,9 +39,9 @@
                 <div class="panel-footer">
                 <form data-ng-submit="addMessage()" name="messageForm">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." data-ng-model="message"/>
+                        <input id="btn-input" type="text" class="form-control input-sm" data-ng-model="message"/>
                         <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+                            <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
                         </span>
                     </div>
                     </form>

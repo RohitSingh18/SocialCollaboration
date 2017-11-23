@@ -2,6 +2,7 @@
  * 
  */
 
+
 app.controller("ChatController", function($scope, ChatService) {
 	console.log('ChatController')
   $scope.messages = [];

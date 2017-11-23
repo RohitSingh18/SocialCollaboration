@@ -5,7 +5,8 @@ var app=angular.module("app",['ngRoute','ngCookies']);
 app.config (function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'views/home.html'
+		 templateUrl : 'views/login.html',
+	        controller:'UserController'
 		
 	})
 	 .when('/addblog', {
@@ -46,6 +47,10 @@ app.config (function($routeProvider){
 	     .when('/getapproveform/:id', {
         templateUrl : 'views/blogapprovalform.html',
         controller:'BlogDetailController'
+	     })
+	      .when('/getblogbyid/:id', {
+        templateUrl : 'views/blogdetails.html',
+        controller:'BlogDetailController'
     
     })
     .when('/getalljobs',{
@@ -56,6 +61,7 @@ app.config (function($routeProvider){
 	.when('/profilepic',{
 	templateUrl:'views/uploadpicture.html'
 	})
+	
 	.when('/myprofile',{
 		templateUrl:'views/profile.html',
 			controller:'UserController'

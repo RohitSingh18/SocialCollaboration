@@ -1,4 +1,4 @@
-<a href="#/getblogs" class="btn btn-default" style="border-radius: 25px; border: 2px solid #a1a1a1">Back</a><br>
+<a href="#!/getblogs" class="btn btn-default">Back</a><br>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
 <div class="col-sm-14">
   <div class="well">
@@ -11,9 +11,9 @@
           <p class="text-right">By {{blog.postedBy.userName}}</p>
           <p>{{blog.blogContent}}</p>
           <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i> {{blog.createDate}} </span></li>
+  			<li><span><i class="glyphicon glyphicon-calendar"></i> {{blog.createDate|date:'medium'}} </span></li>
             <li>|</li>
-            <span><i class="glyphicon glyphicon-comment"></i>comments</span>
+            <span><i class="glyphicon glyphicon"></i>comments</span>
             <li>|</li>
             {{blog.likes}} likes
             <a><span class="glyphicon glyphicon-thumbs-up" ng-class="isLiked?'liked':'default'" ng-click="updateLikes()"></span></a>
@@ -49,9 +49,7 @@
 							{{blogcomment.blogComment}}
 						</div>
 					</div>
-				</div>
-			
-				
+				</div>	
 			</li>
 			
 		</ul>
