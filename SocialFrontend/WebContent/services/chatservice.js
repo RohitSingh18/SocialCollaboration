@@ -6,7 +6,7 @@
 app.service('ChatService', function($q, $timeout,$rootScope) {
 
 	console.log('starting chatService')
-	var BASE_URL ="http://localhost:8080/SocialMiddleware";
+	var BASE_URL = "http://localhost/CollaborationMiddle";
 
 	var service = {}, listener = $q.defer(), socket = {
 		client : null,
@@ -31,9 +31,11 @@ app.service('ChatService', function($q, $timeout,$rootScope) {
 		}, JSON.stringify({
 			message : message,
 			id : id
+		   // userName : $rootScope.currentUser.userName
 		}));
 		console.log("message: " + message)
 		console.log("id : " + id)
+	//	console.log("userName : " + userName)
 		messageIds.push(id);
 	};
 
@@ -69,6 +71,6 @@ app.service('ChatService', function($q, $timeout,$rootScope) {
 	};
 
 	initialize();
-	
+	//getMessage();
 	return service;
 });

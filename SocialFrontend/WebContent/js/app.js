@@ -63,7 +63,11 @@ app.config (function($routeProvider){
 	.when('/chat',{
 		templateUrl:'views/chat.html',
 		controller:'ChatController'
-	});			
+	})
+	
+	.otherwise({
+			templateUrl:'views/home.html'
+	})
 	
 })
 app.run(function($rootScope,$cookieStore,UserService,$location)
@@ -83,6 +87,10 @@ app.run(function($rootScope,$cookieStore,UserService,$location)
 				delete $rootScope.currentUser;
 				$cookieStore.remove('userDetails');
 		     	$location.path('/')
+		     	
+		     	
+		     	
+		     	
 			}
 		})
 		}
